@@ -109,3 +109,22 @@ for i in range(4):
     
     print(*matrix[i], " sum = ", end="")
     print(sum(matrix[i]))
+
+
+# hw 3.9 done
+
+a = 8
+matrix = [ [ randint(1,100) for i in range(a)] for i in range(a)]
+
+# rotate = list(map(list, zip(*matrix)))
+result = 0
+for x in range(len(matrix)):
+    n = matrix[0][x]
+    for i in range(1,len(matrix)):
+        if n > matrix[i][x]:
+            n = matrix[i][x]
+    print(n)
+    
+    if result < n:
+        result = n
+print(result)
