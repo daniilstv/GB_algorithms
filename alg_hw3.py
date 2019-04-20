@@ -88,16 +88,16 @@ print(x , " встречается x",  count_max)
 
 l = [randint(-50,50) for x in range(50)]
 print(l)
-b = -1
-
-for i in range(len(l)-1):
-    
-    if l[i] < 0 and abs(l[i]) > abs(b):
-        print(l[i])
-        b == l[i]
-        pos = i
-    
-print("Позиция", i, b)
+b = 0    
+c = - 50
+for i in range(len(l)):
+    b = l[i]
+    if l[i] < 0:
+        b = l[i]
+        if c < b:
+            c = b
+            
+print(c) 
 
 
 
