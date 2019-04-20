@@ -87,16 +87,14 @@ print(x , " встречается x",  count_max)
 # HW3.5 done
 
 l = [randint(-50,50) for x in range(50)]
-print(l)
-b = 0    
-c = - 50
+#print(l) 
+c = min(l)
 for i in range(len(l)):
-    b = l[i]
-    if l[i] < 0:
+    if l[i] < 0 :
         b = l[i]
         if c < b:
             c = b
-            
+#            print(c)
 print(c) 
 
 
