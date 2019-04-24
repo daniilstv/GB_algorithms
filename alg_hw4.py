@@ -91,8 +91,9 @@ print(timeit.timeit("fibonacci(15)", setup="from __main__ import fibonacci", num
 print("Рекурсивный метод")
 print(timeit.timeit("f(15)", setup="from __main__ import f", number=1))
 
+# ---
 
-def primes(n):
+def eratosphen(n):
     a = [0] * n # создание массива с n количеством элементов
     for i in range(n): # заполнение массива ...
         a[i] = i # значениями от 0 до n-1
@@ -121,5 +122,34 @@ def primes(n):
 
 #primes(200)
 
-print("Решето Эратосфена")
-print(timeit.timeit("primes(1000)", setup="from __main__ import primes", number=1000))
+print("\nРешето Эратосфена")
+#print(timeit.timeit("primes(1000)", setup="from __main__ import primes", number=10000))
+
+
+def my_alg(n):
+    k = 0
+    m = []
+    for i in range(2,n):
+        for j in range(2,n):
+            if i % j == 0  and j < i: #and i % j !=  j:
+                k = k + 1
+            
+        if k == 0:
+            m.append(i)
+        else:
+             k = 0
+    return m
+  
+a = int(input("Введите число, до которого нужно найти простые числа "))
+b = int(input("Введите количество экспериментов "))
+#print("Алгоритм Эратосфена ",eratosphen(a))
+#print("Мой алгоритм ",my_alg(a))
+
+c = "eratosphen("+str(a)+")"
+d = "my_alg("+str(a)+")"
+
+
+print("Алгоритм Эратосфена ")
+print(timeit.timeit(c, setup="from __main__ import eratosphen", number=b))
+print("Мой алгоритм ")
+print(timeit.timeit(d, setup="from __main__ import my_alg", number=b))
