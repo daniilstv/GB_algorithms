@@ -30,7 +30,7 @@ if __name__=='__main__':
 
 print("\n\nСгенерированный и расчитанный списки преобразуем в кортеж ")
 
-def list_quad(n):
+def list_quad2(n):
     lst = [random.randint(0,100) for _ in range(n)]
     lst = tuple(lst)
     lst2 = [lst[_]*lst[_] for _ in range(n)]
@@ -39,15 +39,15 @@ def list_quad(n):
 
 #print(list_quad(20))
 print("cProfile показывает те же затратные процедуры по количеству вызовов:")
-cProfile.run("list_quad(m)")
+cProfile.run("list_quad2(m)")
 
-b = os.system("list_quad(m)")
+b = os.system("list_quad2(m)")
 print("Результат os.system ", b)
 
 
 if __name__=='__main__':
     from timeit import Timer
-    t = Timer(lambda: list_quad(m))
+    t = Timer(lambda: list_quad2(m))
     print("Результат timeit " )
     g = t.timeit(number=200)
     print (g)
