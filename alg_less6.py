@@ -1,15 +1,24 @@
+
 from timeit import Timer
 import cProfile
 import os
 import random
+import sys
+from pympler import asizeof
+from memory_profiler import memory_usage , profile
+#from guppy import hpy
+
 
 m = 1000
 
 print("Задача: получить квадраты значений последовательности чисел\n")
 print("Решаем через списки..")
+
+# @profile 
 def list_quad(n):
     lst = [random.randint(0,100) for _ in range(n)]
     lst2 = [lst[_]*lst[_] for _ in range(n)]
+
     return lst2
 
 #print(list_quad(20))
@@ -18,15 +27,18 @@ cProfile.run("list_quad(m)")
 
 a = os.system("list_quad(m)")
 print("Результат os.system ", a)
+print("memory_usage", memory_usage())
+a1 = sys.getsizeof(list_quad(m))
+print("sys.getsizeof ", a1)
+print("id ", id(list_quad(m)))
+print("asizeof", asizeof.asizeof(list_quad(m)))
 
 if __name__=='__main__':
     
     t = Timer(lambda: list_quad(m))
-    print("Результат timeit " )
     f = t.timeit(number=200)
-    print (f)
-    
-   
+    print("Результат timeit ", f )
+
 
 print("\n\nСгенерированный и расчитанный списки преобразуем в кортеж ")
 
@@ -43,14 +55,19 @@ cProfile.run("list_quad2(m)")
 
 b = os.system("list_quad2(m)")
 print("Результат os.system ", b)
-
+print("memory_usage", memory_usage())
+b1 = sys.getsizeof(list_quad2(m))
+print("sys.getsizeof  ", b1 )
+print("id", id(list_quad2(m)))
+print("asizeof", asizeof.asizeof(list_quad2(m)))
 
 if __name__=='__main__':
     from timeit import Timer
     t = Timer(lambda: list_quad2(m))
-    print("Результат timeit " )
     g = t.timeit(number=200)
-    print (g)
+    print("Результат timeit ", g )
+
     
-print("Результат timeit разлиичается на ", (f/g - 1)*100, "%.")    
-print("\n\nЗначение os.system не поменялось.")
+print("\n\nРезультат timeit различается на ", (f/g - 1)*100, "%.")    
+print("Результат sys.getsizeof различается на ", (a1/b1 - 1)*100, "%.")  
+
