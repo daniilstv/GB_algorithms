@@ -1,4 +1,4 @@
-import timeit
+from timeit import Timer
 import cProfile
 import os
 import random
@@ -20,7 +20,7 @@ a = os.system("list_quad(m)")
 print("Результат os.system ", a)
 
 if __name__=='__main__':
-    from timeit import Timer
+    
     t = Timer(lambda: list_quad(m))
     print("Результат timeit " )
     f = t.timeit(number=200)
@@ -53,4 +53,4 @@ if __name__=='__main__':
     print (g)
     
 print("Результат timeit разлиичается на ", (f/g - 1)*100, "%.")    
-print("\n\nПровел несколько экспериментов. Значение os.system не поменялось. Результат timeit колеблется +-10% Отличия не являются статистически значимыми.")
+print("\n\nЗначение os.system не поменялось.")
