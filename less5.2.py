@@ -94,14 +94,13 @@ print("Cумма чисел равна:", c)
 
 g = [0]
 hex2ten(e)
-#print(e)
-for i in range(n):
-  #  print(g)
-    g = sum_ten(g,e)
-#    print(g)
-#print(g)
-ten2hex(g)
 
+for i in range(n):
+    h = e.copy()
+
+    g = sum_ten(g,h)
+
+ten2hex(g)
 print("Произведение первого числа равно:", g)
 
 
