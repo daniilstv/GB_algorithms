@@ -3,7 +3,7 @@ import random
 
 # print("Пузырьковая сортировка")
 
-rnd_list = [random.randint(-100, 100) for i in range(1000)]
+rnd_list = [random.randint(-100, 100) for i in range(500)]
 
 @profile
 
