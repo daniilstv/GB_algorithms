@@ -1,5 +1,5 @@
-#from memory_profiler import profile 
-#%%
+
+
 import random
 import copy
 n = 15
@@ -13,7 +13,7 @@ def rnd_lst(n, min_rnd = min_rnd , max_rnd = max_rnd):
 rnd_lst = rnd_lst(n)
 print(*rnd_lst)
 
-#%%
+
 print("Пузырьковая сортировка:")
 # @profile
 a = copy.deepcopy(rnd_lst)
@@ -31,7 +31,7 @@ def sort_to_max(origin_list):
 
 print(*sort_to_max(a))
 
-#%%
+
 
 ''' 7.3 Массив размером 2m + 1, где m – натуральное число, заполнен случайным образом. 
 Найдите в массиве медиану. Медианой называется элемент ряда, делящий его на две равные части: 
@@ -48,7 +48,7 @@ else:
     print("Медиана:",a[len(a)//2])
 
 
-#%%
+
 print("Решение задачи 7.3 собственным алгоритмом по неотсортированному массиву с нечетным числом элементов..")
 b = copy.deepcopy(rnd_lst)
 print(*b)
@@ -70,7 +70,8 @@ def id_max(lst, min_rnd = min_rnd):
             x_max = lst [i]
             x_max_idx = i
     return x_max_idx
-#%%
+
+
 for i in range(len(b)//2):
  #   print("По индексу удаляю максимальное и минимальное значение в массиве. Индексы: ", id_max(b), id_min(b))
     b.pop(id_max(b))
